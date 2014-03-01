@@ -19,6 +19,8 @@ There isn't really a website for the javascript language in the same way ruby an
 
 ## Documentation
 
+One of the best places to start learning Node.js is [nodeschool.io](http://nodeschool.io/). These are a set of interactive workshops you complete using the terminal. Highly recommended.
+
 The node.js API documentation:
 [http://nodejs.org/api/index.html](http://nodejs.org/api/index.html)
 
@@ -30,17 +32,17 @@ I recommend two:
 
 The Web Platform Docs is a relatively new set of documentation that includes coverage of html, css, and javscript. It's pretty good, 
 
-**Moxilla Developer Network documentation:** [https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+**Mozilla Developer Network documentation:** [https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 The MDN docs are great. There are bits that are specific to Mozilla, but the majority of the content is relevant to html, css, and javascript in general.
 
 ## Vagrant
 
-Let's create a vagrant machine in your javascript DevEnvs folder:
+Let's create a vagrant machine in your javascript dev-envs folder:
 
 ~~~~~~~~
-mkdir ~/DevEnvs/javascript
-cd ~/DevEnvs/javascript
+mkdir ~/dev-envs/javascript
+cd ~/dev-envs/javascript
 ~~~~~~~~
 
 Create a new vagrant machine using the Ubuntu Precise box:
@@ -95,16 +97,15 @@ Welcome to your Vagrant-built virtual machine.
 Last login: Fri Sep 14 06:22:31 2012 from 10.0.2.2
 ~~~~~~~~
 
-We'll now install ruby and related tools, and get started building applications. Complete all the following instructions while logged in to the vagrant machine.
+We'll now install Node.js, its dependencies, and related tools, and get started building applications. Complete all the following instructions while logged in to the vagrant machine.
 
 ## Install git & dependencies
 
 To get started, we'll need to install git and some necessary system dependencies while logged in to the virtual machine:
 
 ~~~~~~~~
-sudo apt-get install git gcc make
+sudo apt-get install git gcc make curl
 ~~~~~~~~
-
 
 
 ## Installing node.js
@@ -219,9 +220,31 @@ When you install node.js, you get npm.
 
 You may also want to use [bower](http://bower.io/) or [component](http://component.io), two package managers that specifically target client-side code. Remember that javascript packages distributed via npm are not limited to node.js, and can also be used in the browser in many cases through the use of module bundlers like [browserify](http://browserify.org) and [webpack](http://webpack.github.io/).
 
-## Automating repetitive tasks
+## Build tools / automating repetitive tasks
 
-For automating tasks in javascript development, use [grunt.js](http://gruntjs.com).
+There are a few ways to automate repetitive tasks in JavaScript projects.
+
+### npm scripts
+
+Using npm scripts and the `npm run` command is a clean, simple method for organizing the build tools of your JavaScript project.
+
+You specify npm scripts by adding to the `scripts` field of a package.json file in your JavaScript project.
+
+Take this example:
+
+```
+"scripts": {
+  "test": "node test.js",
+  "start": "node server.js",
+  "bundle": "browserify main.js -o bundle.js"
+}
+```
+
+We would run `npm test` to test the code, `npm start` to run a development server, and `npm run bundle` to create a bundled JavaScript file using the `browserify` command.
+
+### Grunt
+
+Another, more complicated option is [grunt.js](http://gruntjs.com).
 
 ### Install
 
@@ -235,7 +258,9 @@ Next, you'll create a Gruntfile.js in your project.
 
 Learn more about grunt.js by reading the [project documentation](http://gruntjs.com/getting-started).
 
-We'll go in-depth with grunt in the extended javascript example later in the chapter.
+### More information about npm scripts and Grunt
+
+Check out this blog post for more information about npm scripts, Grunt, and how I choose between the two: [http://superbigtree.tumblr.com/post/59519017137/introduction-to-grunt-js-and-npm-scripts-and-choosing](http://superbigtree.tumblr.com/post/59519017137/introduction-to-grunt-js-and-npm-scripts-and-choosing)
 
 ## Testing: tape
 For testing, we'll use a library named tape.
@@ -465,16 +490,23 @@ This gives you an idea of how to iterate through an object using a for...in loop
 
 ### importing/requiring code
 
-We'll start with a simple "hello world" example. We'll do one for node.js, and one for client-side code.
-
-### Hello world
-
 #### Node.js
 
-Change directory into your Projects folder.
+When using Node.js we can require the functionality of Node.js modules distributed via npm and code from other files by using the `require` function, typically at the top of the file. An example of requiring the express module:
+
+~~~~~~~~
+var express = require('express');
+~~~~~~~~
 
 #### Browser
 
+For browser side code we might add a script tag into the HTML file of our project. Here's an example of a script tag:
+
+```
+<script src="main.js"></script>
+```
+
+Alternately we might use a tool like browserify to require packages using the same method as Node.js. Learn more about browserify at the project website, [browserify.org](http://browserify.org).
 
 
 ## Web framework: express
@@ -487,7 +519,7 @@ Express is a small web framework for node.js, originally inspired by sinatra.
 Navigate to your javascript projects folder:
 
 ~~~~~~~~
-cd ~/DevEnvs/javascript
+cd ~/dev-envs/javascript
 ~~~~~~~~
 
 Create a folder named hello-express and navigate into it:
@@ -925,4 +957,4 @@ nodemon -e js,css,html,ejs
 
 Learn more about express at the express website: [http://expressjs.com](http://expressjs.com/)
 
-## Resources
+Try out the ExpressWorks workshop on nodeschool.io: [nodeschool.io/#expressworks](http://nodeschool.io/#expressworks)

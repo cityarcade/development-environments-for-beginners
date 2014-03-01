@@ -16,11 +16,11 @@ http://www.python.org/doc/
 
 ## Vagrant
 
-Let's create a vagrant machine in your python DevEnvs folder:
+Let's create a vagrant machine in your python dev-envs folder:
 
 ~~~~~~~~
-mkdir ~/DevEnvs/python
-cd ~/DevEnvs/python
+mkdir ~/dev-envs/python
+cd ~/dev-envs/python
 ~~~~~~~~
 
 Create a new vagrant machine using the Ubuntu Precise box:
@@ -75,7 +75,7 @@ Welcome to your Vagrant-built virtual machine.
 Last login: Fri Sep 14 06:22:31 2012 from 10.0.2.2
 ~~~~~~~~
 
-We'll now install ruby and related tools, and get started building applications. Complete all the following instructions while logged in to the vagrant machine.
+We'll now install python, its dependencies, and related tools, and get started building applications. Complete all the following instructions while logged in to the vagrant machine.
 
 ## Install git & dependencies
 
@@ -101,7 +101,7 @@ https://github.com/pypa/pip
 virtualenv: [http://www.virtualenv.org/en/latest/](http://www.virtualenv.org/en/latest/)
 
 
-## Automating repetitive tasks
+## Build tools / automating repetitive tasks
 
 For automating tasks in python development, use [fabric](http://fabfile.org).
 
@@ -109,16 +109,35 @@ For automating tasks in python development, use [fabric](http://fabfile.org).
 
 First, install fabric:
 
-~~~~~~~~
+```
 pip install fabric
-~~~~~~~~
+```
 
-Next, you'll create a fabfile.py in your project.
+Create a fabfile.py in your project directory:
+
+```
+touch fabfile.py
+```
+
+Add this example to your fabfile.py:
+
+```
+from fabric.api import local
+
+def start():
+    local("python app.py")
+```
+
+Run this command:
+
+```
+fab start
+```
+
+The start task defined in your fabfile.py will be executed.
+
 
 Learn more about fabric by reading the [project documentation](http://docs.fabfile.org/en/1.7/).
-
-We'll go in-depth with fabric in the extended python example later in the chapter.
-
 
 
 ## Testing: unittest
@@ -272,7 +291,7 @@ flask [http://flask.pocoo.org/](http://flask.pocoo.org/)
 Navigate to your python projects folder:
 
 ~~~~~~~~
-cd ~/DevEnvs/python
+cd ~/dev-envs/python
 ~~~~~~~~
 
 Create a folder named hello-flask and navigate into it:

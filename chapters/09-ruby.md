@@ -12,11 +12,11 @@ docs: [http://www.ruby-lang.org/en/documentation](http://www.ruby-lang.org/en/do
 
 ## Vagrant
 
-Let's create a vagrant machine in your ruby DevEnvs folder:
+Let's create a vagrant machine in your ruby dev-envs folder:
 
 ~~~~~~~~
-mkdir ~/DevEnvs/ruby
-cd ~/DevEnvs/ruby
+mkdir ~/dev-envs/ruby
+cd ~/dev-envs/ruby
 ~~~~~~~~
 
 Create a new vagrant machine using the Ubuntu Precise box:
@@ -71,7 +71,9 @@ Welcome to your Vagrant-built virtual machine.
 Last login: Fri Sep 14 06:22:31 2012 from 10.0.2.2
 ~~~~~~~~
 
-We'll now install ruby and related tools, and get started building applications. Complete all the following instructions while logged in to the vagrant machine.
+We'll now install ruby and related tools, and get started building applications. 
+
+**Complete all the following instructions while logged in to the vagrant machine.**
 
 ## Install git & dependencies
 
@@ -194,7 +196,7 @@ As an example, we'll install the bundler gem, which we'll put to use later:
 gem install bundler
 ~~~~~~~~
 
-## Automating repetitive tasks
+## Build tools / automating repetitive tasks
 
 For automating tasks in ruby development, use [rake](http://rake.rubyforge.org/).
 
@@ -206,11 +208,32 @@ First, install the rake gem:
 gem install rake
 ~~~~~~~~
 
-Next, you'll create a Rakefile in your project.
+Create a Rakefile for your project:
+
+```
+touch Rakefile
+```
+
+Add this simple example to your Rakefile:
+
+```
+task :default => [:start]
+
+task :start do
+  ruby "app.rb"
+end
+```
+
+When you run this command on the terminal:
+
+```
+rake
+```
+
+The start task defined in your Rakefile will be executed.
 
 Learn more about rake by reading the [project documentation](http://rake.rubyforge.org/).
 
-We'll go in-depth with rake in the extended ruby example later in the chapter.
 
 ## Testing: minitest
 https://github.com/seattlerb/minitest
@@ -443,7 +466,7 @@ Project website: [http://www.sinatrarb.com](http://www.sinatrarb.com/).
 Navigate to your ruby projects folder:
 
 ~~~~~~~~
-cd ~/DevEnvs/ruby
+cd ~/dev-envs/ruby
 ~~~~~~~~
 
 Create a folder named hello-sinatra and navigate into it:
@@ -683,11 +706,6 @@ touch views/layout.erb views/index.erb views/post.erb
 
 Add this content to the layout.erb file:
 
-```
-
-```
-
-Add this content to the footer.ejs file:
 
 ```
 <!doctype html>

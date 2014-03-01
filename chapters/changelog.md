@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.4.1 – February 28, 2014
+- small typo fixes
+
+## v0.4.0 – February 26, 2014
+- revise introduction
+- expand 02-whatisdevenv
+- improve windows instructions
+- add to vagrant section
+- update editors chapter
+- add resources to git section
+- change `DevEnvs` folder to `dev-envs`
+- add npm scripts info to javascript automating tasks section
+- update js import/require section
+- add resources to javascript section
+- the automating tasks sections of ruby & python chapters need actual content
+- add to ending summary.
+- fix typos and clean up resource link text styles
+
 ## v0.3.0 - Feruary 3, 2014
 - add sublime text editor tips and small typo edits/revisions
 - add info about package control to sublime section

@@ -1,8 +1,8 @@
 # Vagrant: install an operating system inside of your operating system!
 
-Vagrant is a tool for running "virtual machines" on a computer. Let's say your computer is a Mac. With vagrant, you can run a virtual machine with a different operating system on your computer. 
+Vagrant is a tool for running "virtual machines" on a computer. Let's say your computer is running the Windows operating system. With vagrant, you can run a virtual machine on your computer that is running another operating system, like Ubuntu. 
 
-It's almost like dual booting, like having both Windows and Linux installed on a computer, except you have a lot more control over a virtual machine. You can spin one up temporarily to work on a project, and when you're done, destroy the virtual machine.
+It's almost like dual booting, like having both Windows and Ubuntu installed on a computer, except you have a lot more control over a virtual machine. You can spin one up temporarily to work on a project, and when you're done, destroy the virtual machine.
 
 Vagrant makes this process easy. It relies on virtual machine software – there are a number of options, but we'll use software called virtualbox.
 
@@ -50,14 +50,16 @@ Installing vagrant is pretty easy. Just grab the downloader for your operating s
 
 **download vagrant:**
 
-[http://www.vagrantup.com/downloads.html](http://www.vagrantup.com/downloads.html)
+[http://www.vagrantup.com/downloads](http://www.vagrantup.com/downloads)
+
+Choose the installer package for your operating system.
 
 **installation instructions:**
 
-[http://docs-v1.vagrantup.com/v1/docs/getting-started/index.html#install_vagrant](http://docs-v1.vagrantup.com/v1/docs/getting-started/index.html#install_vagrant)
+[docs.vagrantup.com/v2/installation](http://docs.vagrantup.com/v2/installation/index.html)
 
 #### Documentation
-docs: [http://docs-v1.vagrantup.com/v1/docs/index.html](http://docs-v1.vagrantup.com/v1/docs/index.html)
+[docs.vagrantup.com/v2](http://docs.vagrantup.com/v2/)
 
 ## Set up your first vagrant machine
 
@@ -73,11 +75,11 @@ Running the command by itself will show you all the possible sub-commands and op
 
 Let's try this thing out.
 
-Create and navigate to your DevEnvs folder:
+Create and navigate to your `dev-envs` folder:
 
 ~~~~~~~~
-mkdir ~/DevEnvs
-cd ~/DevEnvs
+mkdir ~/dev-envs
+cd ~/dev-envs
 ~~~~~~~~
 
 Create a folder named `tmp` and change directory into it:
@@ -189,7 +191,7 @@ To see which boxes you've currently got downloaded run this command:
 vagrant box list
 ~~~~~~~~
 
-Let's stop this vagrant instance we created in our ~/DevEnvs/tmp folder.
+Let's stop this vagrant instance we created in our ~/dev-envs/tmp folder.
 
 Run this command:
 

@@ -14,9 +14,72 @@ name-of-command --options input-file-or-text output
 
 The `name-of-command` is the actual command. Options are often preceeded by two dashes, or they can likely be shorted to one dash and the first letter or an abbreviation. Then, there will occasionally be some kind of input text or file that the command is acting on, or changing. Similarly, you might specify a filename for the output of the command. You'll see that many of the commands below are more simple.
 
-## Mac / Linux
+## Vagrant
 
-For most purposes, daily activity in the terminal will be the same in Mac and various Linux distros.
+Because we'll be using vagrant to create a virtual machine running Ubuntu throughout this book, this chapter will teach usage of Linux / Unix terminal commands.
+
+## Vagrant
+
+Let's create a vagrant machine in your javascript dev-envs folder:
+
+~~~~~~~~
+mkdir ~/dev-envs/terminal
+cd ~/dev-envs/terminal
+~~~~~~~~
+
+Create a new vagrant machine using the Ubuntu Precise box:
+
+~~~~~~~~
+vagrant init precise32
+~~~~~~~~
+
+Now start the vagrant machine:
+
+~~~~~~~~
+vagrant up
+~~~~~~~~
+
+If all goes well that'll result in output similar to the following:
+
+~~~~~~~~
+Bringing machine 'default' up with 'virtualbox' provider...
+[default] Importing base box 'precise32'...
+[default] Matching MAC address for NAT networking...
+[default] Setting the name of the VM...
+[default] Clearing any previously set forwarded ports...
+[default] Fixed port collision for 22 => 2222. Now on port 2200.
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Forwarding ports...
+[default] -- 22 => 2200 (adapter 1)
+[default] Booting VM...
+[default] Waiting for VM to boot. This can take a few minutes.
+[default] VM booted and ready for use!
+[default] Configuring and enabling network interfaces...
+[default] Mounting shared folders...
+[default] -- /vagrant
+~~~~~~~~
+
+Now we will log in to the vagrant machine. This will be very much like using the `ssh` command to log in to a remote server.
+
+Use this command:
+
+~~~~~~~~
+vagrant ssh
+~~~~~~~~
+
+You should see output similar to the following:
+
+~~~~~~~~
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+Welcome to your Vagrant-built virtual machine.
+Last login: Fri Sep 14 06:22:31 2012 from 10.0.2.2
+~~~~~~~~
+
+Now we can experiment with terminal commands
 
 ### Basic commands:
 
@@ -275,13 +338,3 @@ And you'll still see the following output:
 ooooooh, pizza
 ~~~~~~~~
 
-
-
-
-## Windows
-
-You'll likely want to install a tool called cygwin: [http://www.cygwin.com/](http://www.cygwin.com/).
-
-This gives you a linux-like terminal to use.
-
-> _This section of the book is still a work in progress._
